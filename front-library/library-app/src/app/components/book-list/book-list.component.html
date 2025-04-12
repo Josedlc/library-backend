@@ -1,0 +1,11 @@
+<h2>Catálogo de Libros</h2>
+<div *ngIf="books.length === 0">No hay libros disponibles</div>
+
+<div *ngFor="let book of books" class="book-card">
+  <h3>{{ book.titulo }}</h3>
+  <p><strong>Autor:</strong> {{ book.autor }}</p>
+  <p><strong>Disponible:</strong> {{ book.disponible ? 'Sí' : 'No' }}</p>
+  <button *ngIf="book.disponible" [routerLink]="['/prestamos']" [queryParams]="{ bookId: book.id }">
+    Solicitar Préstamo
+  </button>
+</div>
